@@ -65,7 +65,7 @@ li {
  background: rgba( 48, 164, 138, 0.25 );
  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
  backdrop-filter: blur( 15px );
- -webkit-backdrop-filter: blur( 15px );
+  -webkit-backdrop-filter: blur( 15px );
  border-radius: 10px;
  border: 1px solid rgba( 255, 255, 255, 0.18 );
  
@@ -75,23 +75,9 @@ li {
  overflow: hidden;
  
 }
-/* .dash{
-  height: 10vh;
-  width: 25vw;
-  color: rgb(0, 0, 0);
-  background-color: rgb(189, 207, 232);
-  border-radius: 5vh;
-  font-size: 3vh;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  box-shadow: 5px 5px 30px 10px palevioletred;
-  margin-left: 1vw;
-  margin-top: 2vh;
-  display: grid;
-  place-content: center;
-  align-items: center;
-  text-align: center;
-  cursor: pointer;
-} */
+.dash{
+  border-radius: 100px;
+}
 .box {
   margin-left:auto;
   width:65%;
@@ -173,14 +159,15 @@ li {
 }
   
 }
-/* .dash:hover {
+li:hover {
   animation-name: greying;
   animation-duration: 2s;
   animation-delay: 0ms;
   animation-fill-mode: forwards;
   animation-direction: normal;
   animation-timing-function: ease-in;
-  
+  cursor: pointer;
+  background-color: azure;
   
 }
 
@@ -201,98 +188,7 @@ li {
   box-shadow: 15px 15px 30px 10px rgb(66, 162, 168);
 }
   
-} */
-/* .CourseandContent {
-  height: 10vh;
-  width: 25vw;
-  color: rgb(0, 0, 0);
-  background-color: rgb(189, 207, 232);
-  border-radius: 5vh;
-  font-size: 3vh;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  box-shadow: 5px 5px 30px 10px palevioletred;
-  margin-left: 1vw;
-  margin-top: -40vh;
-  display: grid;
-  place-content: center;
-  align-items: center;
-  text-align: center;
-  cursor: pointer;
 }
-.CourseandContent:hover {
-  animation-name: greying;
-  animation-duration: 2s;
-  animation-delay: 0ms;
-  animation-fill-mode: forwards;
-  animation-direction: normal;
-  animation-timing-function: ease-in;
-  
-  
-}
-
-@keyframes greying {
-  0% {
-    box-shadow: 5px 5px 30px 10px palevioletred;
-  }
-  25% {
-    box-shadow: 7px 7px 30px 10px rgb(240, 88, 139);
-  }
-  50% {
-    box-shadow: 10px 10px 30px 10px rgb(255, 0, 85);
-  }
-  75% {
-    box-shadow: 5px 5px 30px 10px rgb(204, 134, 157);
-  }
-100% {
-  box-shadow: 15px 15px 30px 10px rgb(66, 162, 168);
-}
-}
-
-.QandA {
-  height: 10vh;
-  width: 25vw;
-  color: rgb(0, 0, 0);
-  background-color: rgb(189, 207, 232);
-  border-radius: 5vh;
-  font-size: 3vh;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  box-shadow: 5px 5px 30px 10px palevioletred;
-  margin-left: 1vw;
-  margin-top: 5vh;
-  display: grid;
-  place-content: center;
-  align-items: center;
-  text-align: center;
-  cursor: pointer;
-}
-.QandA:hover {
-  animation-name: another;
-  animation-duration: 2s;
-  animation-delay: 0ms;
-  animation-fill-mode: forwards;
-  animation-direction: alternate;
-  animation-timing-function: ease-in;
-  
-  
-}
-
-@keyframes another {
-  0% {
-    box-shadow: 5px 5px 30px 10px palevioletred;
-  }
-  25% {
-    box-shadow: 7px 7px 30px 10px rgb(240, 88, 139);
-  }
-  50% {
-    box-shadow: 10px 10px 30px 10px rgb(255, 0, 85);
-  }
-  75% {
-    box-shadow: 5px 5px 30px 10px rgb(204, 134, 157);
-  }
-100% {
-  box-shadow: 15px 15px 30px 10px rgb(66, 162, 168);
-}
-} */
 .LiveClass {
   position: relative;
   object-fit: contain;
