@@ -1,0 +1,6 @@
+{
+    "git.alwaysShowStagedChangesResourceGroup": false,
+    "scm.showChangesSummary": false,
+    "git.smartCommitChanges": "tracked",
+    "git.decorations.enabled": false
+}

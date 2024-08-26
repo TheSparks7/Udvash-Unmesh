@@ -8,133 +8,84 @@ html {
 .top-menu {
   background-color: rgba(70, 187, 117, 0.946);
   box-shadow: 30px -7px 100px 20px #292;
-  width: 20vh;
-  margin-top: -1vh;
-  margin: 5vh;
-  max-height: 7vw;
-  min-height: 6vw;
+  width: 90%;
+  margin: 5vh auto;
+  min-height: 40px;
   display: grid;
   align-items: center;
-  border-radius: 2vw;
-  position:sticky;
+  border-radius: 15px;
+  position: sticky;
 }
 
-/* Increase specificity for bell icon styles */
-.top-menu {
-  display: grid;
-  width: auto; /* Adjust size here */
-  height: 40vh, auto;
-  position: relative; 
-
-}
 li {
-  text-decoration:none;
-  font: 1em sans-serif;
-  width: 23vw;
-  height: 10vh;
-  display: flex;
-  align-items: center;
-  margin: 5%;
-  margin-left: -1%;
-  justify-content: center;
+  text-decoration: none;
+  font: 10px sans-serif;
+  height: 40px;
+  padding: 0 10px; /* Add horizontal padding */
+  margin: 5% auto;
   background-color: transparent;
-  box-shadow:2px 3px 40px #00246b,
-             5px 5px 50px 10px inset rgba(242, 236, 255, 0.4);
+  box-shadow: 2px 3px 40px #00246b,
+              5px 5px 50px 10px inset rgba(242, 236, 255, 0.4);
   z-index: -5;
-  /* padding: px; */
+  display: flex;
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
   border-radius: 50px;
-  text-align: center;
+  min-width: 100px; /* Ensure a minimum width for smaller screens */
+}
 
-}
-.anotherMenu::after {
-  background-color: #985f5f;
-  position: relative;
-}
-@media (width <= 1250px) {
-  .anotherMenu{
-    width: 3px;
-  }
-}
+
+
 .anotherMenu {
- z-index: auto;
- list-style: none;
- display: flex;
- position: absolute;
- width:30%;
- max-width:500px;
- height: 90vh;
- padding: auto; 
- text-align: justify;
- margin-left:30px;
- left: -2vh;
- background: rgba( 48, 164, 138, 0.25 );
- box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
- backdrop-filter: blur( 15px );
-  -webkit-backdrop-filter: blur( 15px );
- border-radius: 10px;
- border: 1px solid rgba( 255, 255, 255, 0.18 );
- 
- border-radius: 30px;
- box-shadow: 10px 0px 100px 20px rgb(98, 149, 169),
- 5px 5px 5px 5px 100px whitesmoke;
- overflow: hidden;
- 
+  position: relative;
+  display: inline-block; /* Ensure it takes only the space it needs */
+  width: auto;
+  max-width: 300px;
+  margin-right: 20px; /* Space between .anotherMenu and .box */
+  vertical-align: top; /* Align at the top */
 }
-.dash{
-  border-radius: 100px;
-}
+
 .box {
-  margin-left:auto;
-  width:65%;
+  position: relative ;
+  width: calc(100% - 320px); /* Adjust width considering .anotherMenu's width + margin */
   max-width: 900px;
-  padding: 10px;
-  z-index: 2;
-  overflow: hidden;
   height: 80vh;
+  margin-left: auto;
   background-color: rgb(219, 240, 238);
   border-radius: 10vh;
   display: flex;
+  align-items: flex-start; /* Keep content aligned at the top */
 }
-.line {
-  height: 7vh;
-  width: 7vh;
-  position: relative;
-  background-color: aquamarine;
-  border-radius: 50%;
-  margin-left: 61vh;
-  display: grid;
-  place-items: center;
-  justify-content: center;
-  cursor: pointer;
-  
+
+
+
+
+@media screen and (max-width: 768px) {
+  .anotherMenu {
+    max-width: 80%; /* Adjust max-width for smaller screens */
+  }
+
+  li {
+    font-size: 12px; /* Increase font size slightly */
+    padding: 0 5px; /* Adjust padding for smaller screens */
+  }
 }
-.firstline {
-  z-index: 5;
-  height: 4px;
-  width: 14px;
-  margin-top: 2px;
-  border-radius: 30px;
-  background-color: rgb(0, 0, 0);
-  box-shadow: 1px 1px 5px rgb(0, 147, 226); 
-} 
-.secondline {
-  z-index: 5;
-  height: 4px;
-  width: 14px;
-  margin-top: -5px;
-  border-radius: 30px;
-  background-color: rgb(0, 0, 0);
-  box-shadow: 1px 1px 5px rgb(0, 147, 226); 
-} 
-.thirdline {
-  height: 4px;
-  width: 14px;
-  margin-top: -4.5px;
-  border-radius: 30px;
-  background-color: rgb(0, 0, 0);
-  box-shadow: 1px -10px 20px 5px rgb(255, 255, 255); 
-  
-} 
+
+@media screen and (max-width: 480px) {
+  .anotherMenu {
+    max-width: 100%; /* Full width on very small screens */
+  }
+
+  li {
+    font-size: 10px; /* Adjust font size for smaller screens */
+    min-width: 80px; /* Reduce min-width for very small screens */
+  }
+}
+
+.dash {
+  border-radius: 100px;
+}
+
 .box:hover {
   animation-name: pinking;
   animation-duration: 5s;
@@ -142,8 +93,6 @@ li {
   animation-fill-mode: forwards;
   animation-direction: normal;
   animation-timing-function: ease;
-  
-  
 }
 
 @keyframes pinking {
@@ -159,11 +108,11 @@ li {
   75% {
     box-shadow: 5px 5px 100px 10px rgb(204, 134, 157);
   }
-100% {
-  box-shadow: 15px 15px 100px 10px rgb(66, 162, 168);
+  100% {
+    box-shadow: 15px 15px 100px 10px rgb(66, 162, 168);
+  }
 }
-  
-}
+
 li:hover {
   animation-name: greying;
   animation-duration: 2s;
@@ -173,7 +122,6 @@ li:hover {
   animation-timing-function: ease-in;
   cursor: pointer;
   background-color: azure;
-  
 }
 
 @keyframes greying {
@@ -189,16 +137,16 @@ li:hover {
   75% {
     box-shadow: 5px 5px 30px 10px rgb(204, 134, 157);
   }
-100% {
-  box-shadow: 15px 15px 30px 10px rgb(66, 162, 168);
+  100% {
+    box-shadow: 15px 15px 30px 10px rgb(66, 162, 168);
+  }
 }
-  
-}
+
 .LiveClass {
   position: relative;
   object-fit: contain;
   z-index: 2;
-  padding-left:10vh;
+  padding-left: 10vh;
   padding-bottom: 3vh;
   width: 130vw;
   min-width: 20vw;
@@ -207,7 +155,7 @@ li:hover {
   background: linear-gradient(135deg, rgb(89, 196, 235), rgb(118, 239, 189));
   border-radius: 20px;
   opacity: 20;
-  font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 1rem;
   font-weight: 900;
   margin-top: 25px;
@@ -216,103 +164,97 @@ li:hover {
   display: flex;
   box-shadow: 15px 15px 30px 10px rgb(66, 162, 168);
   border: 2px solid rgba(0, 157, 255, 0.2);
-    -webkit-background-clip: padding-box; /* for Safari */
-  
-    background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
-    word-wrap: break-word;
-  }
-.LiveClass:hover {
-  transform:scale(0.5px,0.5);
+  -webkit-background-clip: padding-box; /* for Safari */
+  background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+  word-wrap: break-word;
 }
 
+.LiveClass:hover {
+  transform: scale(0.5px, 0.5);
+}
 
 .text {
   margin-left: 4vw;
   padding: 1.5vw;
   margin-top: 2vh;
-  
 }
 
-
-
 div.arrow {
-	width: 6vmin;
-	height: 6vmin;
-	box-sizing: border-box;
-	position: relative;
-	left: 16%;
-	top: 40%;
-	transform: rotate(-45deg);
-	
-	&::before {
-		content: '';
-    min-width: 2vmin;
-	
-  min-height: 2vmin;
-		width: 100%;
-		height: 100%;
-		border-width: .8vmin .8vmin 0 0;
-		border-style: solid;
-		border-color: #8ab6f9;
-		transition: .2s ease;
-		display: block;
-		transform-origin: 100% 0;
-	}
+  width: 6vmin;
+  height: 6vmin;
+  box-sizing: border-box;
+  position: relative;
+  left: 16%;
+  top: 40%;
+  transform: rotate(-45deg);
+}
 
-	
-	&:after {
-		content: '';
-		float: left;
-		position: relative;
-		top: -100%;
-		width: 100%;
-		height: 100%;
-		border-width: 0 .8vmin 0 0;
-		border-style: solid;
-		border-color: #8ab6f9;
-		transform-origin: 100% 0;
-		transition:.2s ease;
-	}
-	
-	&:hover::after {
-		transform: rotate(45deg);
-		border-color: #00246b;
-		height: 120%;
-	}
-	&:hover::before {
-		border-color: #00246b;
-		transform: scale(.8);
-		
-	}
-	
+div.arrow::before {
+  content: '';
+  min-width: 2vmin;
+  min-height: 2vmin;
+  width: 100%;
+  height: 100%;
+  border-width: 0.8vmin 0.8vmin 0 0;
+  border-style: solid;
+  border-color: #8ab6f9;
+  transition: 0.2s ease;
+  display: block;
+  transform-origin: 100% 0;
+}
+
+div.arrow::after {
+  content: '';
+  float: left;
+  position: relative;
+  top: -100%;
+  width: 100%;
+  height: 100%;
+  border-width: 0 0.8vmin 0 0;
+  border-style: solid;
+  border-color: #8ab6f9;
+  transform-origin: 100% 0;
+  transition: 0.2s ease;
+}
+
+div.arrow:hover::after {
+  transform: rotate(45deg);
+  border-color: #00246b;
+  height: 120%;
+}
+
+div.arrow:hover::before {
+  border-color: #00246b;
+  transform: scale(0.8);
 }
 
 .boks {
-  
-  height: auto;
-  width:2.5rem;
-  background-color: #CADCFC;
-  border-radius: 10px;
-  margin-top: 9px;
-  margin-left: -20px;
-  cursor: pointer;
-  
+   height: 5vw; /* Use viewport width for responsiveness */
+   width: 5vw;  /* Use viewport width for responsiveness */
+   min-height: 30px; /* Set a minimum height */
+   min-width: 30px;  /* Set a minimum width */
+   margin-top: 1vw; /* Adjust to be relative */
+   margin-left: 1vw; /* Adjust to be relative */
+   border-radius: 50%; /* Ensure it remains circular */
+   background-color: #CADCFC;
+   border-radius: 10px;
+   cursor: pointer;
 }
+
 .boks:hover {
   box-shadow: 0px 0px 20px 5px #6f9bd1;
 }
+
 .Nextbigone {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-left: auto;
-  bottom:0px; 
+  bottom: 0px;
   border-radius: 10px;
   width: 50%;
   max-width: 900px;
   height: 50px;
-
   background-color: blueviolet;
-  /* background: linear-gradient(135deg, rgb(195, 15, 250), rgb(255, 192, 253)); */
 }
