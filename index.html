@@ -2,296 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Udvash-Unmesh Resources</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f0f4f8;
-            color: #333;
-            line-height: 1.7; 
-        }
-        .container {
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-        header {
-            background-image: linear-gradient(to right, #6a11cb, #2575fc);
-            color: white;
-            padding: 25px 0;
-            text-align: center;
-            border-bottom-left-radius: 12px; 
-            border-bottom-right-radius: 12px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-            transform: translateY(-5px); 
-            animation: fadeInHeader 1s ease-in-out, pulseHeader 2s infinite alternate;
-        }
-        @keyframes fadeInHeader {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes pulseHeader {
-            from { transform: translateY(-5px); }
-            to { transform: translateY(-10px); }
-        }
-        header h1 {
-            font-size: 2.5rem;
-            font-weight: 700; 
-            margin-bottom: 12px;
-            letter-spacing: -0.02em;
-        }
-        header p {
-            font-size: 1.2rem;
-            font-weight: 400;
-            color: #f8f8f8;
-            opacity: 0.9;
-        }
-        main {
-            margin-top: 50px;
-        }
-        section {
-            background-color: white;
-            border-radius: 15px; 
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); 
-            padding: 30px;
-            margin-bottom: 40px;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            animation: fadeInSection 1s ease-in-out;
-        }
-        @keyframes fadeInSection {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        section:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-        }
-        section h2 {
-            font-size: 2rem;
-            font-weight: 700; 
-            color: #2c3e50;
-            margin-bottom: 30px;
-            text-align: left;
-            border-bottom: 2px solid #81ecec;
-            padding-bottom: 10px;
-            letter-spacing: -0.02em;
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: grid;
-            grid-template-columns: 1fr; 
-            gap: 20px;
-        }
-        ul li {
-            background-color: #e0f7fa; /* Lol thng */
-            border-radius: 12px; 
-            padding: 20px;
-            border: 1px solid #b2ebf2;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
-            animation: fadeInListItem 0.5s ease-in-out, pulseListItem 2s infinite alternate;
-        }
-        @keyframes fadeInListItem {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        @keyframes pulseListItem {
-            from { background-color: #e0f7fa; }
-            to { background-color: #f0f4f8; }
-        }
-        ul li:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            background-color: #fff; 
-        }
-        ul li a {
-            color: #0c4a6e; 
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.2rem;
-            display: inline-block;
-            transition: color 0.3s ease-in-out;
-        }
-        ul li a:hover {
-            text-decoration: underline;
-            color: #008080; 
-        }
-        ul li p {
-            color: #555;
-            font-size: 0.95rem;
-            margin-top: 10px;
-            opacity: 0.8;
-        }
-        footer {
-            background-image: linear-gradient(to right, #6a11cb, #2575fc);
-            color: white;
-            padding: 25px 0;
-            text-align: center;
-            margin-top: 50px;
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
-            box-shadow: 0 -6px 15px rgba(0, 0, 0, 0.1);
-        }
-        footer p {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-
-   
-        @media (max-width: 768px) {
-            .container {
-                max-width: 100%;
-                padding-left: 15px;
-                padding-right: 15px;
-            }
-            header h1 {
-                font-size: 2.2rem;
-            }
-            header p {
-                font-size: 1.1rem;
-            }
-            section {
-                padding: 25px;
-            }
-            section h2 {
-                font-size: 1.75rem;
-            }
-            ul {
-                grid-template-columns: 1fr; 
-            }
-            ul li {
-                padding: 15px;
-            }
-            ul li a {
-                font-size: 1.1rem;
-            }
-            ul li p {
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 1.8rem;
-            }
-            header p {
-                font-size: 1rem;
-            }
-            section {
-                padding: 20px;
-            }
-            section h2 {
-                font-size: 1.5rem;
-            }
-            ul {
-                grid-template-columns: 1fr;
-            }
-            ul li {
-                padding: 12px;
-            }
-            ul li a {
-                font-size: 1rem;
-            }
-            ul li p {
-                font-size: 0.85rem;
-            }
-        }
-    </style>
+    <title>Udvash-Unmesh</title>
 </head>
-<body class="bg-gray-100">
-    <header>
-        <h1>Udvash-Unmesh</h1>
-        <p>Your resources for learning</p>
-    </header>
-
-    <main class="container">
-        <section>
-            <h2>Course Materials</h2>
-            <ul>
-                <li>
-                    <a href="#">Physics</a>
-                    <p>Link to Physics materials.</p>
-                </li>
-                <li>
-                    <a href="#">Chemistry</a>
-                    <p>Link to Chemistry materials.</p>
-                </li>
-                <li>
-                    <a href="#">Mathematics</a>
-                    <p>Link to Mathematics materials.</p>
-                </li>
-                <li>
-                    <a href="#">Biology</a>
-                    <p>Link to Biology materials.</p>
-                </li>
-                <li>
-                    <a href="#">Bangla</a>
-                    <p>Link to Bangla materials.</p>
-                </li>
-                <li>
-                    <a href="#">English</a>
-                    <p>Link to English materials.</p>
-                </li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Exam Archives</h2>
-            <ul>
-                <li>
-                    <a href="#">HSC Exam Papers</a>
-                    <p>Previous HSC exam papers.</p>
-                </li>
-                <li>
-                    <a href="#">University Admission Tests</a>
-                    <p>Previous University admission test papers.</p>
-                </li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Additional Resources</h2>
-            <ul>
-                <li>
-                    <a href="#">Textbook Solutions</a>
-                    <p>Solutions for textbooks.</p>
-                </li>
-                <li>
-                    <a href="#">Practice Questions</a>
-                    <p>Practice questions and quizzes.</p>
-                </li>
-                <li>
-                    <a href="#">Study Guides</a>
-                    <p>Study guides and notes.</p>
-                </li>
-            </ul>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 Udvash-Unmesh. All rights reserved.</p>
-    </footer>
-
-    <script>
-
-    </script>
+<body>
+    <div class="container">
+        <div class="item item-1" id="non">
+            <button class="apple-back-button">
+              <span class="back-icon" aria-hidden="true"></span>
+              <span class="back-text">Details</span>
+            </button>
+            Live Class
+        </div>
+        <div class="item item-2" id="non">
+            <button class="apple-back-button">
+              <span class="back-icon" aria-hidden="true"></span>
+              <span class="back-text">Details</span>
+            </button>
+            Past Class
+        </div>
+        <div class="item item-3" id="non">
+            <button class="apple-back-button">
+              <span class="back-icon" aria-hidden="true"></span>
+              <span class="back-text">Details</span>
+            </button>
+            Q&A
+        </div>
+      </div>
 </body>
 </html>
