@@ -403,7 +403,7 @@ img {
     }
 }
 
-/* Landscape mode adjustments */
+/* Landscape mode adjustments Cuz what thinking lol! */
 @media (max-height: 500px) and (orientation: landscape) {
     body {
         grid-template-columns: 1fr;
