@@ -208,6 +208,7 @@ img {
     padding: 20px;
     gap: 16px;
     overflow-y: auto;
+    min-height: 45px;
 }
 
 .item {
@@ -226,6 +227,7 @@ img {
     transition: transform var(--short-transition) var(--transition-timing), 
                 box-shadow var(--short-transition) var(--transition-timing);
     min-height: 64px;
+    min-width: 200px;
 }
 
 .item:hover {
@@ -273,178 +275,3 @@ img {
     transform: scale(0.90);
 }
 
-/* Improved Media Queries */
-@media (max-width: 1024px) {
-    body {
-        padding: 14px;
-        gap: 14px;
-    }
-}
-
-@media (max-width: 768px) {
-    body {
-        padding: 12px;
-        gap: 12px;
-    }
-    .top-section {
-        grid-template-columns: 100px 1fr;
-        height: 12vh;
-        min-height: 80px;
-    }
-    .main-content {
-        grid-template-columns: 56px 1fr;
-    }
-    .sidebar {
-        width: 56px;
-        padding: 16px 8px;
-    }
-    .sidebar:hover {
-        width: 140px;
-    }
-    .container {
-        padding: 16px;
-    }
-}
-
-@media (max-width: 640px) {
-    body {
-        padding: 10px;
-        gap: 10px;
-    }
-    .top-section {
-        grid-template-columns: 80px 1fr;
-        height: 10vh;
-        min-height: 70px;
-    }
-    .upperbox {
-        padding: 8px 12px;
-    }
-    .img2 {
-        width: 32px;
-        height: 32px;
-    }
-    .container {
-        padding: 14px;
-    }
-    .item {
-        padding: 14px;
-        min-height: 60px;
-    }
-    .apple-back-button {
-        padding: 0.4em 0.8em;
-        font-size: 0.85rem;
-    }
-}
-
-@media (max-width: 480px) {
-    body {
-        grid-template-rows: auto auto 1fr;
-        grid-template-areas:
-            "header"
-            "sidebar"
-            "main";
-        padding: 8px;
-        gap: 8px;
-    }
-    .top-section {
-        grid-template-columns: 70px 1fr;
-        min-height: 60px;
-        max-height: 80px;
-    }
-    .main-content {
-        grid-template-columns: 1fr;
-        grid-template-areas: "container";
-    }
-    .sidebar {
-        grid-area: sidebar;
-        height: 56px;
-        flex-direction: row;
-        padding: 0 12px;
-        width: 100%;
-        justify-content: space-between;
-    }
-    .sidebar:hover {
-        width: 100%;
-        height: 56px;
-    }
-    .sidebar-top, 
-    .sidebar-bottom {
-        flex-direction: row;
-        height: 100%;
-        align-items: center;
-        gap: 8px;
-        justify-content: center;
-    }
-    .sidebar-item {
-        height: 40px;
-        width: 40px;
-        justify-content: center;
-        padding: 0;
-    }
-    .sidebar:hover .sidebar-item {
-        width: auto;
-        justify-content: center;
-    }
-    .sidebar-text {
-        display: none;
-    }
-    .container {
-        padding: 12px;
-        gap: 12px;
-    }
-    .item {
-        padding: 12px;
-        min-height: 56px;
-    }
-    .apple-back-button {
-        padding: 0.35em 0.7em;
-        margin-right: 0.7em;
-        font-size: 0.8rem;
-    }
-}
-
-/* Landscape mode adjustments Cuz what thinking lol! */
-@media (max-height: 500px) and (orientation: landscape) {
-    body {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr;
-        grid-template-areas:
-            "header"
-            "main";
-        padding: 8px;
-        gap: 8px;
-    }
-    .top-section {
-        height: 60px;
-        min-height: 50px;
-        max-height: 60px;
-    }
-    .main-content {
-        grid-area: main;
-        display: grid;
-        grid-template-columns: 50px 1fr;
-        grid-template-areas: "sidebar container";
-    }
-    .sidebar {
-        height: auto;
-        width: 50px;
-        flex-direction: column;
-        padding: 12px 6px;
-    }
-    .sidebar-top, .sidebar-bottom {
-        flex-direction: column;
-        gap: 12px;
-    }
-    .sidebar-item {
-        height: 38px;
-        width: 38px;
-    }
-    .container {
-        padding: 12px;
-        gap: 12px;
-    }
-    .item {
-        min-height: 50px;
-        padding: 10px;
-    }
-}
