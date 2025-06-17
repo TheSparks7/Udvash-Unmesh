@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <script>
+        const cursor = document.getElementById('cursorBall');
+window.addEventListener('mousemove', e => {
+    cursor.style.top = e.clientY + 'px';
+    cursor.style.left = e.clientX + 'px';
+});
+
+    </script>
     <div class="cursor-ball" id="cursorBall"></div>
     <div class="top-section">
         <div class="mainline">
