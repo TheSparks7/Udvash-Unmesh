@@ -109,6 +109,12 @@ window.addEventListener('mousemove', e => {
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+        <script>
+        const cursor = document.getElementById('cursorBall');
+        window.addEventListener('mousemove', e => {
+            cursor.style.top = e.clientY + 'px';
+            cursor.style.left = e.clientX + 'px';
+        });
+    </script>
 </body>
 </html>
