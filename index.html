@@ -5,17 +5,296 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Udvash-Unmesh</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        .cursor-ball {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 36px;
+            height: 36px;
+            pointer-events: none;
+            z-index: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle at 60% 40%, #ffb347 60%, #ff7300 100%);
+            box-shadow: 0 0 25px 10px #ff7300cc;
+            filter: brightness(1.2);
+            transform: translate(-50%, -50%);
+            transition: transform 0.15s cubic-bezier(.4,2,.6,1), box-shadow 0.15s;
+            opacity: 0.85;
+            will-change: transform;
+        }
+        :root {
+            --clr-background: #0a0f1f;
+            --clr-text: #e1e8f0;
+            --clr-container-bg: rgba(23, 31, 50, 0.4);
+            --clr-container-bg1: rgba(31, 41, 65, 0.4);
+            --clr-item-bg: rgba(35, 45, 71, 0.4);
+            --clr-accent: #00d1ff;
+            --clr-shadow-dark: rgba(0, 0, 0, 0.2);
+            --clr-shadow-accent: rgba(0, 209, 255, 0.2);
+            --clr-hover-shadow-accent: rgba(0, 209, 255, 0.25);
+            --apple-button-accent-color: var(--clr-accent);
+            --apple-button-bg: rgba(255, 255, 255, 0.08);
+            --apple-button-bg-hover: rgba(255, 255, 255, 0.12);
+            --transition-timing: cubic-bezier(0.42, 0, 0.58, 1);
+            --long-transition: 0.5s;
+            --short-transition: 0.25s;
+        }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--clr-text);
+            background-color: var(--clr-background);
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto 1fr;
+            grid-template-areas:
+                "header"
+                "main";
+            min-height: 100vh;
+            padding: 16px;
+            gap: 16px;
+            overflow-x: hidden;
+            cursor: none;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        .top-section {
+            grid-area: header;
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            grid-template-areas: "mainline upperbox";
+            gap: 16px;
+            height: 15vh;
+            min-height: 90px;
+            max-height: 120px;
+            position: relative;
+        }
+        .mainline {
+            grid-area: mainline;
+            background-color: var(--clr-item-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(35, 45, 71, 0.3);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            cursor: grab;
+            z-index: 1;
+            backdrop-filter: blur(18px) saturate(180%);
+            -webkit-backdrop-filter: blur(18px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .mainline:active{
+            transform: scale(0.93);
+            transition: 0.2s;
+        }
+        .mainline img {
+            width: 85%;
+            height: 85%;
+            object-fit: contain;
+        }
+        .upperbox {
+            grid-area: upperbox;
+            background-color: var(--clr-container-bg1);
+            border-radius: 12px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 10px 16px;
+            z-index: 1;
+            backdrop-filter: blur(18px) saturate(180%);
+            -webkit-backdrop-filter: blur(18px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .img2 {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .img2 img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .main-content {
+            grid-area: main;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            grid-template-areas: "sidebar container";
+            gap: 16px;
+        }
+        .sidebar {
+            grid-area: sidebar;
+            background-color: var(--clr-item-bg);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 12px;
+            transition: width var(--long-transition) var(--transition-timing);
+            overflow: hidden;
+            z-index: 10;
+            width: 64px;
+            backdrop-filter: blur(18px) saturate(180%);
+            -webkit-backdrop-filter: blur(18px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .sidebar:hover {
+            width: 160px;
+            box-shadow: 0 0 15px var(--clr-shadow-accent);
+        }
+        .sidebar-top, 
+        .sidebar-bottom {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 16px;
+            align-items: center;
+        }
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            height: 44px;
+            width: 44px;
+            border-radius: 15px;
+            padding: 0 10px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all var(--short-transition) var(--transition-timing);
+        }
+        .sidebar-item:active {
+            transform: scale(0.90);
+        }
+        .sidebar:hover .sidebar-item {
+            width: 100%;
+            justify-content: flex-start;
+        }
+        .sidebar-item:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        .sidebar-item.active {
+            background-color: rgba(0, 209, 255, 0.1);
+        }
+        .sidebar-icon {
+            min-width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--clr-text);
+            transition: all var(--short-transition) var(--transition-timing);
+        }
+        .sidebar-item:hover .sidebar-icon,
+        .sidebar-item.active .sidebar-icon {
+            color: var(--clr-accent);
+        }
+        .sidebar-text {
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(10px);
+            transition: all var(--short-transition) var(--transition-timing);
+            margin-left: 12px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .sidebar:hover .sidebar-text {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .container {
+            grid-area: container;
+            background-color: var(--clr-container-bg);
+            border-radius: 16px;
+            box-shadow: 0 8px 20px var(--clr-shadow-dark);
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            gap: 16px;
+            overflow-y: auto;
+            min-height: 45px;
+            z-index: 1;
+            backdrop-filter: blur(18px) saturate(180%);
+            -webkit-backdrop-filter: blur(18px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .item {
+            background-color: var(--clr-item-bg);
+            padding: 16px;
+            font-weight: 600;
+            color: var(--clr-text);
+            text-align: left;
+            box-shadow: 0 2px 8px var(--clr-shadow-dark);
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform var(--short-transition) var(--transition-timing), 
+                        box-shadow var(--short-transition) var(--transition-timing);
+            min-height: 64px;
+            min-width: 200px;
+            z-index: 2;
+            backdrop-filter: blur(18px) saturate(180%);
+            -webkit-backdrop-filter: blur(18px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px var(--clr-hover-shadow-accent);
+        }
+        .apple-back-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5em 1em;
+            margin-right: 1em;
+            border: none;
+            border-radius: 8px;
+            background-color: var(--apple-button-bg);
+            color: var(--apple-button-accent-color);
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all var(--short-transition) var(--transition-timing);
+            position: relative;
+            z-index: 2;
+            backdrop-filter: blur(5px);
+        }
+        .back-icon {
+            display: inline-block;
+            width: 0.5em;
+            height: 0.5em;
+            border-style: solid;
+            border-color: currentColor;
+            border-width: 0.15em 0.15em 0 0;
+            transform: rotate(-135deg);
+            margin-right: 0.5em;
+            transition: transform var(--short-transition) var(--transition-timing);
+        }
+        .apple-back-button:hover {
+            background-color: var(--apple-button-bg-hover);
+        }
+        .apple-back-button:active {
+            transform: scale(0.90);
+        }
+    </style>
 </head>
 <body>
-    <script>
-        const cursor = document.getElementById('cursorBall');
-window.addEventListener('mousemove', e => {
-    cursor.style.top = e.clientY + 'px';
-    cursor.style.left = e.clientX + 'px';
-});
-
-    </script>
     <div class="cursor-ball" id="cursorBall"></div>
     <div class="top-section">
         <div class="mainline">
@@ -27,13 +306,11 @@ window.addEventListener('mousemove', e => {
             </div>
         </div>
     </div>
-
     <div class="main-content">
         <div class="sidebar">
             <div class="sidebar-top">
                 <div class="sidebar-item active">
                     <div class="sidebar-icon">
-                        <!-- SVG Icon -->
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
                             <polyline points="9 22 9 12 15 12 15 22"/>
@@ -43,7 +320,6 @@ window.addEventListener('mousemove', e => {
                 </div>
                 <div class="sidebar-item">
                     <div class="sidebar-icon">
-                        <!-- SVG Icon -->
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
                             <circle cx="12" cy="7" r="4"/>
@@ -53,7 +329,6 @@ window.addEventListener('mousemove', e => {
                 </div>
                 <div class="sidebar-item">
                     <div class="sidebar-icon">
-                        <!-- SVG Icon -->
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                         </svg>
@@ -64,7 +339,6 @@ window.addEventListener('mousemove', e => {
             <div class="sidebar-bottom">
                 <div class="sidebar-item">
                     <div class="sidebar-icon">
-                        <!-- SVG Icon -->
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"/>
                             <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
@@ -75,7 +349,6 @@ window.addEventListener('mousemove', e => {
                 </div>
                 <div class="sidebar-item">
                     <div class="sidebar-icon">
-                        <!-- SVG Icon -->
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="3"/>
                             <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
@@ -109,7 +382,7 @@ window.addEventListener('mousemove', e => {
             </div>
         </div>
     </div>
-        <script>
+    <script>
         const cursor = document.getElementById('cursorBall');
         window.addEventListener('mousemove', e => {
             cursor.style.top = e.clientY + 'px';
